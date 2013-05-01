@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../css/pmag.css" type="text/css" />
+</head>
+<body>
+<div id="header_wrap">
+   <h1><a href="https://www.facebook.com/groups/programmerMagazine">程式人雜誌</a> <sub> --  2013 年 5 月號 (開放公益出版品)</sub></h1>
+</div>
+<div id="content">
+<h2 id="javascript-5-在互動網頁中的應用以-html-編輯器為例-作者陳鍾誠">JavaScript (5) – 在互動網頁中的應用，以 HTML 編輯器為例 (作者：陳鍾誠)</h2>
+<p>在本文當中，我們將透過 JavaScript 設計一個 HTML 編輯器，讓您可以直接在瀏覽器當中看到 HTML 網頁的呈現結果， 筆者認為這個範例對學習動態網頁設計是一個非常簡單、卻又很有啟發性的程式。因為他很明顯的展現了動態網頁的原理。</p>
+<h3 id="html-編輯器">HTML 編輯器</h3>
+<p>以下是該 HTML 編輯器的執行結果，當我們在 CSS 與 HTML 區塊輸入對應的原始碼之後，就可以按下「→」按鈕，然後在 呈現的 <code>&lt;div id=&quot;showbox&quot; ...&lt;/div&gt;</code> 區塊看到兩者搭配時的呈現結果。</p>
+<div class="figure">
+<img src="../img/HtmlEditorRun.jpg" alt="HTML 編輯器的執行畫面" /><p class="caption">HTML 編輯器的執行畫面</p>
+</div>
+<p>您也可以點選下列連結以實際檢視該網頁：</p>
+<ul>
+<li>HTML 編輯器：<a href="https://dl.dropboxusercontent.com/u/101584453/pmag/201305/code/HtmlEditor.htm">https://dl.dropboxusercontent.com/u/101584453/pmag/201305/code/HtmlEditor.htm</a></li>
+</ul>
+<p>以下是這個網頁的原始 HTML 程式碼，其中有兩大段是我們預設填入的 CSS 與 HTML 原始碼，這兩段原則上可以去掉，但是 為了測試方便起見，我們就留在檔案中，請讀者閱讀的時候仔細區分之。</p>
+<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;html&gt;</span>
+<span class="kw">&lt;style&gt;</span>
+textarea, <span class="fl">#showbox</span> <span class="kw">{</span> <span class="kw">border:</span> <span class="dt">1px</span> <span class="dt">solid</span> <span class="dt">#9f9f9f</span><span class="kw">;</span> <span class="kw">}</span>
+<span class="kw">&lt;/style&gt;</span>
+<span class="kw">&lt;style</span><span class="ot"> id=</span><span class="st">&quot;showboxstyle&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;/style&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> type=</span><span class="st">&quot;text/javascript&quot;</span><span class="kw">&gt;</span>
+<span class="er">function convert() {</span>
+<span class="er">  var cssbox  = document.getElementById(&quot;cssbox&quot;);</span>
+<span class="er">  var editbox = document.getElementById(&quot;editbox&quot;);</span>
+<span class="er">  var showbox = document.getElementById(&quot;showbox&quot;);</span>
+<span class="er">  var showboxstyle = document.getElementById(&quot;showboxstyle&quot;);</span>
+  <span class="ot">showbox</span>.<span class="fu">innerHTML</span> = <span class="ot">editbox</span>.<span class="fu">value</span>;
+  <span class="ot">showboxstyle</span>.<span class="fu">innerHTML</span> = <span class="ot">cssbox</span>.<span class="fu">value</span>;
+}
+<span class="kw">&lt;/script&gt;</span>   
+<span class="kw">&lt;body&gt;</span>
+<span class="kw">&lt;form&gt;</span>
+<span class="kw">&lt;table</span><span class="ot"> width=</span><span class="st">&quot;95%&quot;</span><span class="ot"> style=</span><span class="st">&quot;border-collapse: collapse; border: 0px;&quot;</span><span class="kw">&gt;&lt;tr&gt;</span>
+<span class="kw">&lt;tr&gt;&lt;td</span><span class="ot"> colspan=</span><span class="st">&quot;2&quot;</span><span class="ot"> style=</span><span class="st">&quot;text-align:center&quot;</span><span class="kw">&gt;</span>HTML 原始碼　　<span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="ot"> value=</span><span class="st">&quot; → &quot;</span><span class="ot"> onclick=</span><span class="st">&quot;JavaScript:convert()&quot;</span><span class="kw">/&gt;</span>　　　顯示結果<span class="kw">&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="kw">&lt;td</span><span class="ot"> width=</span><span class="st">&quot;50%&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;textarea</span><span class="ot"> id=</span><span class="st">&quot;cssbox&quot;</span><span class="ot"> style=</span><span class="st">&quot;width:100%; height:100px;&quot;</span> <span class="kw">&gt;</span>
+<span class="co">&lt;!-- 預設貼入的CSS：開始 --&gt;</span>
+td, th { padding:10px; }
+th { background-color:black; color:white; }
+table { border-collapse: collapse; border: 1px solid #373737; }
+<span class="co">&lt;!---預設貼入的CSS：結束 --&gt;</span>
+<span class="kw">&lt;/textarea&gt;</span>
+<span class="kw">&lt;textarea</span><span class="ot"> id=</span><span class="st">&quot;editbox&quot;</span><span class="ot"> style=</span><span class="st">&quot;width:100%; height:400px;&quot;</span><span class="kw">&gt;</span>
+<span class="co">&lt;!-- 預設貼入的HTML：開始 --&gt;</span>
+Hello! <span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;http://tw.yahoo.com&quot;</span><span class="kw">&gt;</span>Yahoo<span class="kw">&lt;/a&gt;&lt;br/&gt;&lt;/br&gt;</span>
+<span class="kw">&lt;table&gt;</span>
+<span class="kw">&lt;tr&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;</span>欄 1<span class="kw">&lt;/th&gt;&lt;th&gt;</span>欄 2<span class="kw">&lt;/th&gt;&lt;/tr&gt;</span>
+<span class="kw">&lt;tr&gt;&lt;th&gt;</span>列 1<span class="kw">&lt;/th&gt;&lt;td&gt;</span>1,1<span class="kw">&lt;/td&gt;&lt;td&gt;</span>1,2<span class="kw">&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="kw">&lt;tr&gt;&lt;th&gt;</span>列 2<span class="kw">&lt;/th&gt;&lt;td&gt;</span>2,1<span class="kw">&lt;/td&gt;&lt;td&gt;</span>2,2<span class="kw">&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="kw">&lt;/table&gt;&lt;br/&gt;</span>
+<span class="kw">&lt;form</span><span class="ot"> action=</span><span class="st">&quot;signup&quot;</span><span class="ot"> method=</span><span class="st">&quot;post&quot;</span><span class="kw">&gt;</span>
+帳號: <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> name=</span><span class="st">&quot;user&quot;</span><span class="kw">/&gt;&lt;br/&gt;</span>
+密碼: <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;password&quot;</span><span class="ot"> name=</span><span class="st">&quot;password&quot;</span><span class="kw">/&gt;&lt;br/&gt;</span>
+信箱: <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;email&quot;</span><span class="ot"> name=</span><span class="st">&quot;email&quot;</span><span class="kw">/&gt;&lt;br/&gt;</span>
+生日: <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;date&quot;</span><span class="ot"> name=</span><span class="st">&quot;birthday&quot;</span><span class="kw">/&gt;&lt;br/&gt;</span>
+照片: <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;file&quot;</span><span class="ot"> name=</span><span class="st">&quot;picture&quot;</span><span class="kw">/&gt;&lt;br/&gt;</span>
+性別: <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;radio&quot;</span><span class="ot"> name=</span><span class="st">&quot;sex&quot;</span><span class="ot"> value=</span><span class="st">&quot;male&quot;</span><span class="ot"> checked</span><span class="kw">/&gt;</span> 男
+      <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;radio&quot;</span><span class="ot"> name=</span><span class="st">&quot;sex&quot;</span><span class="ot"> value=</span><span class="st">&quot;female&quot;</span><span class="kw">/&gt;</span> 女<span class="kw">&lt;br/&gt;</span>
+血型: <span class="kw">&lt;select</span><span class="ot"> name=</span><span class="st">&quot;BloodType&quot;</span><span class="kw">&gt;</span>
+        <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;A&quot;</span><span class="kw">&gt;</span>A 型<span class="kw">&lt;/option&gt;</span>
+        <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;B&quot;</span><span class="kw">&gt;</span>B 型<span class="kw">&lt;/option&gt;</span>
+        <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;AB&quot;</span><span class="kw">&gt;</span>AB 型<span class="kw">&lt;/option&gt;</span>
+        <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;O&quot;</span><span class="kw">&gt;</span>O 型<span class="kw">&lt;/option&gt;</span>
+      <span class="kw">&lt;/select&gt;</span> <span class="kw">&lt;br/&gt;</span>
+自我介紹： <span class="kw">&lt;br/&gt;</span>
+<span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="ot"> value=</span><span class="st">&quot;送出&quot;</span><span class="kw">/&gt;&lt;input</span><span class="ot"> type=</span><span class="st">&quot;reset&quot;</span><span class="ot"> value=</span><span class="st">&quot;清除&quot;</span><span class="kw">/&gt;&lt;br/&gt;</span>
+<span class="kw">&lt;/form&gt;</span>
+<span class="co">&lt;!-- 預設貼入的HTML：結束 --&gt;</span>
+<span class="kw">&lt;/textarea&gt;</span> 
+<span class="kw">&lt;/td&gt;</span>
+<span class="kw">&lt;td&gt;</span>
+<span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;showbox&quot;</span><span class="ot"> style=</span><span class="st">&quot;width:100%; height:500px;&quot;</span><span class="kw">&gt;</span>
+<span class="kw">&lt;/div&gt;</span>
+<span class="kw">&lt;/td&gt;</span>
+<span class="kw">&lt;/tr&gt;&lt;/table&gt;</span>
+<span class="kw">&lt;/form&gt;</span>
+<span class="kw">&lt;/body&gt;</span>
+<span class="kw">&lt;/html&gt;</span></code></pre>
+<h3 id="程式解析">程式解析</h3>
+<p>上述程式當中有三個主要的區塊，分別是：</p>
+<ol style="list-style-type: decimal">
+<li>CSS 填入區塊： <code>&lt;textarea id=&quot;cssbox&quot; ...&lt;/textarea&gt;</code></li>
+<li>HTML 填入區塊：<code>&lt;textarea id=&quot;editbox&quot; ...&lt;/textarea&gt;</code></li>
+<li>HTML 顯示區塊：<code>&lt;div id=&quot;showbox&quot; ... &lt;/div&gt;</code></li>
+</ol>
+<p>此網頁的核心程式部分真的很簡單，只有如下短短的一小段：</p>
+<ol style="list-style-type: decimal">
+<li>利用 <code>var editbox = document.getElementById(&quot;editbox&quot;);</code> 取得 HTML 區塊內容</li>
+<li>利用 <code>showbox.innerHTML = editbox.value;</code> 這個指令將該 HTML 原始碼填入 showbox 當中</li>
+</ol>
+<p>這樣就完成顯示 HTML 的動作了。</p>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">convert</span>() {
+  <span class="kw">var</span> cssbox  = <span class="ot">document</span>.<span class="fu">getElementById</span>(<span class="st">&quot;cssbox&quot;</span>);
+  <span class="kw">var</span> editbox = <span class="ot">document</span>.<span class="fu">getElementById</span>(<span class="st">&quot;editbox&quot;</span>);
+  <span class="kw">var</span> showbox = <span class="ot">document</span>.<span class="fu">getElementById</span>(<span class="st">&quot;showbox&quot;</span>);
+  <span class="kw">var</span> showboxstyle = <span class="ot">document</span>.<span class="fu">getElementById</span>(<span class="st">&quot;showboxstyle&quot;</span>);
+  <span class="ot">showbox</span>.<span class="fu">innerHTML</span> = <span class="ot">editbox</span>.<span class="fu">value</span>;
+  <span class="ot">showboxstyle</span>.<span class="fu">innerHTML</span> = <span class="ot">cssbox</span>.<span class="fu">value</span>;
+}</code></pre>
+<p>但是這樣作並沒有加入 cssbox 的內容到 HTML 當中，因此我們加入了下列原始碼：</p>
+<ol style="list-style-type: decimal">
+<li>在整個網頁的頭部事先用 <code>&lt;style id=&quot;showboxstyle&quot;&gt;...&lt;/style&gt;</code> 這個標記加入一個 CSS style 顯示區塊</li>
+<li>利用 <code>showboxstyle.innerHTML = cssbox.value</code> 這個指令將 cssbox 的內容填入到該表頭的 style 區塊中</li>
+</ol>
+<p>這樣就達成了套用 CSS 內容到網頁中的目的，完成了整個 HTML 編輯器的功能。</p>
+<h3 id="結語">結語</h3>
+<p>在本文中，我們用非常簡單的程式，建構了一個 HTML 編輯器。事實上我們只不過是把網頁內容從編輯區域移動到顯示區域，然後流覽器就會 自動解釋這些內容進行呈現了。</p>
+<p>在本系列的文章中，關於瀏覽器部分的 JavaScript 程式，我們將至此告一個段落，在下一期當中，我們將開始進入伺服端的 javascript 程式。 我們將利用 node.js 這個伺服端 JavaScript 執行平台，進一步探索 JavaScript 程式的奧秘，我們下期見！</p>
+<h3 id="參考">參考</h3>
+<ul>
+<li><a href="http://stackoverflow.com/questions/1720320/how-to-dynamically-create-css-class-in-javascript-and-apply">http://stackoverflow.com/questions/1720320/how-to-dynamically-create-css-class-in-javascript-and-apply</a></li>
+<li><a href="http://dev.opera.com/articles/view/dynamic-style-css-javascript/">http://dev.opera.com/articles/view/dynamic-style-css-javascript/</a></li>
+</ul>
+</div>
+<div id="footer">
+<a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌</a> ，採用 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/ ">創作共用：姓名標示、相同方式分享</a> 授權，歡迎加入 <a href="https://www.facebook.com/groups/programmerMagazine/">雜誌社團</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../css/pmag.css" type="text/css" />
+</head>
+<body>
+<div id="header_wrap">
+   <h1><a href="https://www.facebook.com/groups/programmerMagazine">程式人雜誌</a> <sub> --  2013 年 5 月號 (開放公益出版品)</sub></h1>
+</div>
+<div id="content">
+<h2 id="軟體短訊-cmake-專案檔產生工具">軟體短訊 – CMake 專案檔產生工具</h2>
+<p>最近在建置 OpenCV 時，發現居然需要用 CMake 才能完成，於是只好想辦法瞭解 CMake 到底為何物？</p>
+<p>原本以為 CMake 是與 GNU make 類似的另一套專案建置工具，就好像 Ruby 的 Rake 一樣，但後來發現我錯了！</p>
+<p>CMake 並不是用來取代 GNU make 的東西，而是著眼於跨平台的問題，利用一套更上層的 make 工具，同時產生 GNU 的 Makefile 與 Visual Studio 的 .sln 專案檔的一種工具，這樣的方式可以解決平台所衍生的不相容問題。 或許我們可以稱 CMake 是一種「產生專案建置檔的工具」(Meta-Project Maker)。</p>
+<div class="figure">
+<img src="../img/CMakeHomePage.jpg" alt="CMake 官網的首頁" /><p class="caption">CMake 官網的首頁</p>
+</div>
+<h3 id="cmake-的歷史">CMake 的歷史</h3>
+<p>CMake 是為了解決美國國家醫學圖書館出資的 Visible Human Project 專案下的 Insight Segmentation and Registration Toolkit (ITK) 軟體的跨平台建構的需求而創造出來的，其設計受到了 Ken Martin 開發的 pcmaker 所影響。pcmaker 當初則是為了支援 Visualization Toolkit (VTK) 這個開放原始碼的三維圖形和視覺系統才出現的，今日 VTK 也採用了 CMake。在設計 CMake 之時，Kitware 公司的 Bill Hoffman 採用了 pcmaker 的一些重要想法，加上更多他自己的點子，想把 GNU 建構系統 的一些功能整合進來。CMake 最初的實作是在 2000 年中作的，在 2001 年初有了急速的進展，許多改良是來自其他把 CMake 整合到自己的系統中的開發者，比方說，採用 CMake 作為建構環境的 VXL 社群就貢獻了很多重要的功能，Brad King 為了支援 CABLE 和 GCC-XML 這套自動包裝工具也加了幾項功能，通用電氣公司的研發部門則用在內部的測試系統 DART，還有一些功能是為了讓 VTK 可以過渡到 CMake 和支援洛斯阿拉莫斯國家實驗室的 Advanced Computing Lab 的平行視覺系統 ParaView 而加的。</p>
+<h3 id="使用-cmake-建置的軟體">使用 CMake 建置的軟體</h3>
+<p>使用 CMake 的應用軟體很多，以下是維基百科列出的軟體：</p>
+<blockquote>
+<p>Allegro library, Armadillo - linear algebra library, Avidemux, Awesome, Blender 3D, Boost C++ Libraries, Bullet物理引擎, Chicken, Chipmunk physics engine, clang, Conky, Doomsday Engine, Drishti, Fennel, Gammu, GDCM, Gmsh, Hedgewars, Hypertable, hugin, IGSTK, Insight Segmentation and Registration Toolkit, KDE Software Compilation 4, Kicad, LMMS, LLVM, MiKTeX, MuseScore, MySQL (on Windows only), OGRE, OpenSceneGraph, OpenCV, OpenFLUID, ParaView, Poppler, PvPGN, Quantum GIS, Raw Therapee, Rem, Scribus, SuperTux, Slicer, Stellarium, The Visualization Toolkit, VXL, UFFS</p>
+</blockquote>
+<p>仔細看的話，您會發現這些軟體可都是大有來頭阿！可見 CMake 現在已經廣受開放原始碼群體的重用了阿！</p>
+<h3 id="cmake-的使用方法">CMake 的使用方法</h3>
+<p>如果您想知道 CMake 的使用方法，請參考以下「井民全」先生的網誌文章：</p>
+<ul>
+<li>[程式設計] 最簡單的 CMake 使用說明 – how to use cmake -- <a href="http://mqjing.blogspot.tw/2009/09/cmake-how-to-use-cmake.html">http://mqjing.blogspot.tw/2009/09/cmake-how-to-use-cmake.html</a></li>
+</ul>
+<h3 id="參考文獻">參考文獻</h3>
+<ul>
+<li><a href="http://zh.wikipedia.org/zh-tw/CMake">維基百科:CMake</a></li>
+<li><a href="http://zh.wikibooks.org/zh-hant/CMake_%E5%85%A5%E9%96%80">CMake 入門：維基教科書，自由的教學讀本</a></li>
+<li><a href="http://blog.csdn.net/dbzhang800/article/details/6314073">cmake 学习笔记(一)</a></li>
+<li>最簡單的 CMake 使用說明 – how to use cmake
+<ul>
+<li><a href="http://mqjing.blogspot.tw/2009/09/cmake-how-to-use-cmake.html">http://mqjing.blogspot.tw/2009/09/cmake-how-to-use-cmake.html</a></li>
+</ul></li>
+</ul>
+<p>【本文由陳鍾誠取材並修改自維基百科】</p>
+</div>
+<div id="footer">
+<a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌</a> ，採用 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/ ">創作共用：姓名標示、相同方式分享</a> 授權，歡迎加入 <a href="https://www.facebook.com/groups/programmerMagazine/">雜誌社團</a>
+</div>
+</body>
+</html>

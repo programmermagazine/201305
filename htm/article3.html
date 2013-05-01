@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../css/pmag.css" type="text/css" />
+</head>
+<body>
+<div id="header_wrap">
+   <h1><a href="https://www.facebook.com/groups/programmerMagazine">程式人雜誌</a> <sub> --  2013 年 5 月號 (開放公益出版品)</sub></h1>
+</div>
+<div id="content">
+<h2 id="r-統計軟體3-中央極限定理-作者陳鍾誠">R 統計軟體(3) – 中央極限定理 (作者：陳鍾誠)</h2>
+<p>中央極限定理是機率統計上最重要的定理之一，整個統計的估計與檢定幾乎都建立在這個定理之上，因此 對「中央極限定理」有清楚的理解是學好機率統計的一個關鍵。</p>
+<p>在本文中，我們將利用 R 軟體實作並驗證「中央極限定理」，讓讀者能透過程式實際體會該定理的重要性與用途。</p>
+<h3 id="中央極限定理簡介">中央極限定理簡介</h3>
+<p>中央極限定理的數學式：<img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7Bx_1%2Bx_2%2B...%2Bx_n%7D%7Bn%7D%20%20%3D%20%5Cbar%7Bx%7D%20%5Crightarrow%20N%28%5Cmu%2C%20%5Csigma%2F%5Csqrt%7Bn%7D%29" alt="\frac{x_1+x_2+...+x_n}{n}  = \bar{x} \rightarrow N(\mu, \sigma/\sqrt{n})" title="\frac{x_1+x_2+...+x_n}{n}  = \bar{x} \rightarrow N(\mu, \sigma/\sqrt{n})" /></p>
+<p>如果用白話文陳述，那就是說 n 個樣本的平均數 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbar%7Bx%7D" alt="\bar{x}" title="\bar{x}" /> 會趨近於常態分布。</p>
+<p>更精確一點的說，當您從某個母體 X 取出 n 個樣本，則這 n 個樣本的平均數 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbar%7Bx%7D" alt="\bar{x}" title="\bar{x}" /> 會趨近於以平均期望值 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu" alt="\mu" title="\mu" /> 為中心， 以母體標準差 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Csigma" alt="\sigma" title="\sigma" /> 除以 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Csqrt%7Bn%7D" alt="\sqrt{n}" title="\sqrt{n}" /> 的值 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Csigma%2F%5Csqrt%7Bn%7D" alt="\sigma/\sqrt{n}" title="\sigma/\sqrt{n}" /> 為標準差的常態分布。</p>
+<p>如果採用另一種正規化後的公式寫法，也可以將上述的「中央極限定理」改寫為：<img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B%5Cbar%7Bx%7D-%5Cmu%7D%7B%5Csigma%2F%5Csqrt%7Bn%7D%7D%20%5Crightarrow%20Z" alt="\frac{\bar{x}-\mu}{\sigma/\sqrt{n}} \rightarrow Z" title="\frac{\bar{x}-\mu}{\sigma/\sqrt{n}} \rightarrow Z" /></p>
+<p>其中的 Z 是指標準常態分部，也就是 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B%5Cbar%7Bx%7D-%5Cmu%7D%7B%5Csigma%2F%5Csqrt%7Bn%7D%7D" alt="\frac{\bar{x}-\mu}{\sigma/\sqrt{n}}" title="\frac{\bar{x}-\mu}{\sigma/\sqrt{n}}" /> 會趨近標準常態分布。</p>
+<h3 id="中央極限定理的用途">中央極限定理的用途</h3>
+<p>根據上述的定義，我們知道當樣本數 n 足夠大時 (通常 20 個以上就夠大了)， n 個樣本的平均值 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7Bx_1%2Bx_2%2B...%2Bx_n%7D%7Bn%7D" alt="\frac{x_1+x_2+...+x_n}{n}" title="\frac{x_1+x_2+...+x_n}{n}" /><br />(也就是 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbar%7Bx%7D" alt="\bar{x}" title="\bar{x}" />) 會趨近於常態分布，換句話說也就是 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7B%5Cbar%7Bx%7D-%5Cmu%7D%7B%5Csigma%2F%5Csqrt%7Bn%7D%7D" alt="\frac{\bar{x}-\mu}{\sigma/\sqrt{n}}" title="\frac{\bar{x}-\mu}{\sigma/\sqrt{n}}" /> 會趨近於標準常態分布。</p>
+<p>因此、當我們取得一組樣本之後，我們就可以計算其平均數 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cfrac%7Bx_1%2Bx_2%2B...%2Bx_n%7D%7Bn%7D%3D%5Cbar%7Bx%7D" alt="\frac{x_1+x_2+...+x_n}{n}=\bar{x}" title="\frac{x_1+x_2+...+x_n}{n}=\bar{x}" /> ，如果有人告訴我們說母體的 平均數 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu" alt="\mu" title="\mu" /> 的值是多少，我們就可以看看 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbar%7Bx%7D" alt="\bar{x}" title="\bar{x}" /> 與 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu" alt="\mu" title="\mu" /> 是否差距很遠，如果差距很遠，導致 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cbar%7Bx%7D" alt="\bar{x}" title="\bar{x}" /> 來自平均數 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu" alt="\mu" title="\mu" /> 母體的機率很小，那麼很可能是此組樣本是非常罕見的特例，或者該組樣本的抽樣有所偏差，也就是該組樣本很可能並非來自平均數為 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu" alt="\mu" title="\mu" /> 的母體。</p>
+<p>以下是一些標準常態分布的重要數值，</p>
+<ol style="list-style-type: decimal">
+<li><img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=P%5B-%5Csigma%20%3C%20X%20-%20%5Cmu%20%3C%20%5Csigma%5D%20%3D%200.68" alt="P[-\sigma &lt; X - \mu &lt; \sigma] = 0.68" title="P[-\sigma &lt; X - \mu &lt; \sigma] = 0.68" /></li>
+<li><img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=P%5B-2%20%5Csigma%20%3C%20X%20-%20%5Cmu%20%3C%202%20%5Csigma%5D%20%3D%200.95" alt="P[-2 \sigma &lt; X - \mu &lt; 2 \sigma] = 0.95" title="P[-2 \sigma &lt; X - \mu &lt; 2 \sigma] = 0.95" /></li>
+<li><img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=P%5B-3%20%5Csigma%20%3C%20X%20-%20%5Cmu%20%3C%203%20%5Csigma%5D%20%3D%200.997" alt="P[-3 \sigma &lt; X - \mu &lt; 3 \sigma] = 0.997" title="P[-3 \sigma &lt; X - \mu &lt; 3 \sigma] = 0.997" /></li>
+<li><img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=P%5B-4%20%5Csigma%20%3C%20X%20-%20%5Cmu%20%3C%204%20%5Csigma%5D%20%3D%200.99993" alt="P[-4 \sigma &lt; X - \mu &lt; 4 \sigma] = 0.99993" title="P[-4 \sigma &lt; X - \mu &lt; 4 \sigma] = 0.99993" /></li>
+<li><img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=P%5B-5%20%5Csigma%20%3C%20X%20-%20%5Cmu%20%3C%205%20%5Csigma%5D%20%3D%200.9999994" alt="P[-5 \sigma &lt; X - \mu &lt; 5 \sigma] = 0.9999994" title="P[-5 \sigma &lt; X - \mu &lt; 5 \sigma] = 0.9999994" /></li>
+<li><img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=P%5B-6%20%5Csigma%20%3C%20X%20-%20%5Cmu%20%3C%206%20%5Csigma%5D%20%3D%200.999999998" alt="P[-6 \sigma &lt; X - \mu &lt; 6 \sigma] = 0.999999998" title="P[-6 \sigma &lt; X - \mu &lt; 6 \sigma] = 0.999999998" /></li>
+</ol>
+<pre class="sourceCode R"><code class="sourceCode r">&gt;<span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">1</span>)-<span class="kw">pnorm</span>(-<span class="dv">1</span>)
+[<span class="dv">1</span>] <span class="fl">0.6826895</span>
+&gt;<span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">2</span>)-<span class="kw">pnorm</span>(-<span class="dv">2</span>)
+[<span class="dv">1</span>] <span class="fl">0.9544997</span>
+&gt;<span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">3</span>)-<span class="kw">pnorm</span>(-<span class="dv">3</span>)
+[<span class="dv">1</span>] <span class="fl">0.9973002</span>
+&gt;<span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">4</span>)-<span class="kw">pnorm</span>(-<span class="dv">4</span>)
+[<span class="dv">1</span>] <span class="fl">0.9999367</span>
+&gt;<span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">5</span>)-<span class="kw">pnorm</span>(-<span class="dv">5</span>)
+[<span class="dv">1</span>] <span class="fl">0.9999994</span>
+&gt;<span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">6</span>)-<span class="kw">pnorm</span>(-<span class="dv">6</span>)
+[<span class="dv">1</span>] <span class="dv">1</span>
+&gt;<span class="st"> </span><span class="kw">options</span>(<span class="dt">digits=</span><span class="dv">10</span>)
+&gt;<span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">6</span>)-<span class="kw">pnorm</span>(-<span class="dv">6</span>)
+[<span class="dv">1</span>] <span class="fl">0.999999998</span></code></pre>
+<p>從上面的數值您可以看出來，管理學上所謂的六標準差其實是很高的一個要求，也就是良率必須要達到 99.9999998% 以上才行。</p>
+<p>如果您今天所取的 n 個樣本，與母體平均數 <img style="vertical-align:middle" src="http://chart.apis.google.com/chart?cht=tx&amp;chl=%5Cmu" alt="\mu" title="\mu" /> 距離兩個標準差以上，那就很可能有問題了，這種推論稱為檢定，我們可以用 R 軟體中的 t.test 函數來檢驗這件事，我們將在下一期當中說明如何用 R 軟體進行統計檢定的主題，讓我們先將焦點移回到中央極限定理身上，用 R 軟體 來驗證該定理。</p>
+<h3 id="r-程式範例驗證中央極限定理">R 程式範例：驗證中央極限定理</h3>
+<pre class="sourceCode R"><code class="sourceCode r">&gt;<span class="st"> </span>u &lt;-<span class="st"> </span><span class="kw">matrix</span> ( <span class="kw">runif</span>(<span class="dv">500000</span>), <span class="dv">50</span>, <span class="dv">10000</span> )
+&gt;<span class="st"> </span>y &lt;-<span class="st"> </span><span class="kw">apply</span> ( u, <span class="dv">2</span>, mean )
+&gt;<span class="st"> </span><span class="kw">hist</span>(u[,<span class="dv">1</span>])
+&gt;<span class="st"> </span><span class="kw">hist</span>(y)
+&gt;<span class="st"> </span>?apply
+&gt;<span class="st"> </span></code></pre>
+<p>說明：</p>
+<ol style="list-style-type: decimal">
+<li>u 乃是將 50 萬個 uniform 樣本分配成 50*10000 的矩陣，</li>
+<li>y 對 u 進行列統計 apply ( u, 2, mean ) 代表對每行取平均值 mean(col of u) 的結果。</li>
+<li>因此 y 代表從 Uniform Distribution 中每次取出 50 個樣本，然後進行加總平均 (x1+x2+...+x50)/50 的結果。</li>
+<li>從下列的 hist(y) 圖形中，我們可以看到中央極限定理的證據：[[$ <em>i = mean(x</em>i[1,50])$ 會趨向常態分布。</li>
+</ol>
+<div class="figure">
+<img src="../img/HistU.jpg" alt="圖、hist(u[,1]) 畫出的圖形" /><p class="caption">圖、hist(u[,1]) 畫出的圖形</p>
+</div>
+<div class="figure">
+<img src="../img/HistY.jpg" alt="圖、hist(y) 畫出的圖形" /><p class="caption">圖、hist(y) 畫出的圖形</p>
+</div>
+<pre class="sourceCode R"><code class="sourceCode r">CLT =<span class="st"> </span>function(x) {
+  op&lt;-<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) <span class="co"># 設為 2*2 的四格繪圖版</span>
+  <span class="kw">hist</span>(x, <span class="dt">nclass=</span><span class="dv">50</span>)     <span class="co"># 繪製 x 序列的直方圖 (histogram)。</span>
+  m2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(x, <span class="dt">nrow=</span><span class="dv">2</span>, )  <span class="co"># 將 x 序列分為 2*k 兩個一組的矩陣 m2。</span>
+  xbar2 &lt;-<span class="st"> </span><span class="kw">apply</span>(m2, <span class="dv">2</span>, mean)   <span class="co"># 取每兩個一組的平均值 (x1+x2)/2 放入 xbar2 中。</span>
+  <span class="kw">hist</span>(xbar2, <span class="dt">nclass=</span><span class="dv">50</span>)     <span class="co"># 繪製 xbar2 序列的直方圖 (histogram)。</span>
+  m10 &lt;-<span class="st"> </span><span class="kw">matrix</span>(x, <span class="dt">nrow=</span><span class="dv">10</span>, )   <span class="co"># 將 x 序列分為 10*k 兩個一組的矩陣 m10。</span>
+  xbar10 &lt;-<span class="st"> </span><span class="kw">apply</span>(m10, <span class="dv">2</span>, mean) <span class="co"># 取每10個一組的平均值 (x1+..+x10)/10 放入 xbar10 中。</span>
+  <span class="kw">hist</span>(xbar10, <span class="dt">nclass=</span><span class="dv">50</span>)    <span class="co"># 繪製 xbar10 序列的直方圖 (histogram)。</span>
+  m20 &lt;-<span class="st"> </span><span class="kw">matrix</span>(x, <span class="dt">nrow=</span><span class="dv">20</span>, )   <span class="co"># 將 x 序列分為 25*k 兩個一組的矩陣 m25。</span>
+  xbar20 &lt;-<span class="st"> </span><span class="kw">apply</span>(m20, <span class="dv">2</span>, mean) <span class="co"># 取每20個一組的平均值 (x1+..+x20)/20 放入 xbar20 中。</span>
+  <span class="kw">hist</span>(xbar20, <span class="dt">nclass=</span><span class="dv">50</span>)    <span class="co"># 繪製 xbar20 序列的直方圖 (histogram)。</span>
+}
+
+<span class="kw">CLT</span>(<span class="kw">rbinom</span>(<span class="dv">100000</span>, <span class="dv">20</span>, <span class="fl">0.5</span>)) <span class="co"># 用參數為 n=20, p=0.5 的二項分布驗證中央極限定理。</span>
+<span class="kw">CLT</span>(<span class="kw">runif</span>(<span class="dv">100000</span>)) <span class="co"># 用參數為 a=0, b=1 的均等分布驗證中央極限定理。</span>
+<span class="kw">CLT</span>(<span class="kw">rpois</span>(<span class="dv">100000</span>, <span class="dv">4</span>)) <span class="co"># 用參數為 lambda=4 的布瓦松分布驗證中央極限定理。</span>
+<span class="kw">CLT</span>(<span class="kw">rgeom</span>(<span class="dv">100000</span>, <span class="fl">0.5</span>)) <span class="co"># 用參數為 n=20, m=10, k=5 的超幾何分布驗證中央極限定理。</span>
+<span class="kw">CLT</span>(<span class="kw">rhyper</span>(<span class="dv">100000</span>, <span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">5</span>)) <span class="co"># 用參數為 p=0.5 的幾何分布驗證中央極限定理。</span>
+<span class="kw">CLT</span>(<span class="kw">rnorm</span>(<span class="dv">100000</span>)) <span class="co"># 用參數為 mean=0, sd=1 的標準常態分布驗證中央極限定理。</span>
+<span class="kw">CLT</span>(<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">6</span>, <span class="dv">100000</span>, <span class="dt">replace=</span>T)) <span class="co"># 用擲骰子的分布驗證中央極限定理。</span>
+<span class="kw">CLT</span>(<span class="kw">sample</span>(<span class="dv">0</span>:<span class="dv">1</span>, <span class="dv">100000</span>, <span class="dt">replace=</span>T)) <span class="co"># 用丟銅板的分布驗證中央極限定理。</span></code></pre>
+<p>以下是這些指令的執行結果，從這些圖中您可以看到當樣本數到達 20 個的時候，幾乎每種樣本都會趨向常態分布。</p>
+<div class="figure">
+<img src="../img/CLT_rbinom.jpg" alt="圖、指令 CLT(rbinom(100000, 20, 0.5)) 的執行結果" /><p class="caption">圖、指令 CLT(rbinom(100000, 20, 0.5)) 的執行結果</p>
+</div>
+<div class="figure">
+<img src="../img/CLT_runif.jpg" alt="圖、指令 CLT(runif(100000)) 的執行結果" /><p class="caption">圖、指令 CLT(runif(100000)) 的執行結果</p>
+</div>
+<div class="figure">
+<img src="../img/CLT_rpois.jpg" alt="圖、指令 CLT(rpois(100000, 4)) 的執行結果" /><p class="caption">圖、指令 CLT(rpois(100000, 4)) 的執行結果</p>
+</div>
+<div class="figure">
+<img src="../img/CLT_rgeom.jpg" alt="圖、指令 CLT(rgeom(100000, 0.5)) 的執行結果" /><p class="caption">圖、指令 CLT(rgeom(100000, 0.5)) 的執行結果</p>
+</div>
+<div class="figure">
+<img src="../img/CLT_rhyper.jpg" alt="圖、指令 CLT(rhyper(100000, 20, 10, 5)) 的執行結果" /><p class="caption">圖、指令 CLT(rhyper(100000, 20, 10, 5)) 的執行結果</p>
+</div>
+<div class="figure">
+<img src="../img/CLT_rnorm.jpg" alt="圖、指令 CLT(rnorm(100000)) 的執行結果" /><p class="caption">圖、指令 CLT(rnorm(100000)) 的執行結果</p>
+</div>
+<div class="figure">
+<img src="../img/CLT_sample1_6.jpg" alt="圖、指令 CLT(sample(1:6, 100000, replace=T)) 的執行結果" /><p class="caption">圖、指令 CLT(sample(1:6, 100000, replace=T)) 的執行結果</p>
+</div>
+<div class="figure">
+<img src="../img/CLT_sample0_1.jpg" alt="圖、指令 CLT(sample(0:1, 100000, replace=T)) 的執行結果" /><p class="caption">圖、指令 CLT(sample(0:1, 100000, replace=T)) 的執行結果</p>
+</div>
+<h3 id="參考文獻">參考文獻</h3>
+<ol style="list-style-type: decimal">
+<li><a href="http://msenux.redwoods.edu/math/R/CentralLimit.php">The Central Limit Theorem (Part 1)</a></li>
+<li><a href="http://episte.math.ntu.edu.tw/articles/mm/mm_09_3_07/index.html">洋洋 -- 淺談機率上的幾個極限定理</a></li>
+<li>Proof of Central Limit Theorem, H. Krieger, Mathematics 157, Harvey Mudd College, Spring, 2005
+<ul>
+<li><a href="http://www.math.hmc.edu/~krieger/m157cltproof.pdf">http://www.math.hmc.edu/~krieger/m157cltproof.pdf</a></li>
+</ul></li>
+<li><a href="http://en.wikipedia.org/wiki/Central_limit_theorem">Central limit theorem:From Wikipedia, the free encyclopedia</a></li>
+<li>Two Proofs of the Central Limit Theorem, Yuval Filmus, January/February 2010
+<ul>
+<li><a href="http://www.cs.toronto.edu/~yuvalf/CLT.pdf">http://www.cs.toronto.edu/~yuvalf/CLT.pdf</a></li>
+</ul></li>
+</ol>
+</div>
+<div id="footer">
+<a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌</a> ，採用 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/ ">創作共用：姓名標示、相同方式分享</a> 授權，歡迎加入 <a href="https://www.facebook.com/groups/programmerMagazine/">雜誌社團</a>
+</div>
+</body>
+</html>

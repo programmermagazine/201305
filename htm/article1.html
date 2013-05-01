@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="../css/pmag.css" type="text/css" />
+</head>
+<body>
+<div id="header_wrap">
+   <h1><a href="https://www.facebook.com/groups/programmerMagazine">程式人雜誌</a> <sub> --  2013 年 5 月號 (開放公益出版品)</sub></h1>
+</div>
+<div id="content">
+<h2 id="arduino入門教學5-多顆-led-的控制-作者copper-maa">Arduino入門教學(5) – 多顆 LED 的控制 (作者：Copper Maa)</h2>
+<h3 id="實驗lab5-led-bar-graph">實驗：Lab5 LED Bar Graph</h3>
+<p>控制 LED 燈排 (LED Bar Graph)，製作出類似「霹靂遊俠」影集中「夥計」車頭 LED 燈排的掃瞄效果。LED Bar Graph 適合當作電池電量或音量之類的指示燈，其外觀如下：</p>
+<h3 id="材料">材料</h3>
+<p>麵包板 x 1 Arduino 主板 x 1 LED bar garph x 1 或是 LED x 10 220 ohm 電阻 x 10 單心線 x N 接線</p>
+<p>把 LED bar graph 或 10 顆 LED 接到 pin2 到 pin11 腳 。LED 的接法為: 長腳(陽極)接到 pin 腳，短腳(陰極)串接一顆 220 ohm 電阻接到 GND</p>
+<h3 id="電路圖">電路圖</h3>
+<div class="figure">
+<img src="../img/arduino_ledbargraph_board.png" />
+</div>
+<h3 id="程式碼-ledbargraph.pde">程式碼: LEDBarGraph.pde</h3>
+<pre class="sourceCode CPP"><code class="sourceCode cpp">
+<span class="co">// these constants won&#39;t change:</span>
+<span class="dt">const</span> <span class="dt">int</span> ledCount = <span class="dv">10</span>;    <span class="co">// the number of LEDs in the bar graph</span>
+
+<span class="dt">int</span> ledPins[] = { 
+  <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span> };   <span class="co">// an array of pin numbers to which LEDs are attached</span>
+
+<span class="dt">void</span> setup() {
+  <span class="co">// loop over the pin array and set them all to output:</span>
+  <span class="kw">for</span> (<span class="dt">int</span> thisLed = <span class="dv">0</span>; thisLed &lt; ledCount; thisLed++) {
+    pinMode(ledPins[thisLed], OUTPUT); 
+  }
+}
+
+<span class="dt">void</span> loop() {
+  <span class="co">// loop over the LED array</span>
+  <span class="co">// Go from right to left</span>
+  <span class="kw">for</span> (<span class="dt">int</span> thisLed = <span class="dv">0</span>; thisLed &lt; ledCount; thisLed++) {
+    digitalWrite(ledPins[thisLed], HIGH);
+    delay(<span class="dv">60</span>);
+    digitalWrite(ledPins[thisLed], LOW);
+  }
+  
+  <span class="co">// And from left to right again</span>
+  <span class="kw">for</span> (<span class="dt">int</span> thisLed = ledCount -<span class="dv">1</span> ; thisLed &gt;= <span class="dv">0</span>; thisLed--) {
+    digitalWrite(ledPins[thisLed], HIGH);
+    delay(<span class="dv">60</span>);
+    
+    <span class="kw">if</span> (thisLed == <span class="dv">0</span>) {
+      <span class="co">// 跑完一輪後&amp;#65292;讓第一顆 LED 亮著暫停一下</span>
+      delay(<span class="dv">200</span>); 
+    } <span class="kw">else</span> {
+      digitalWrite(ledPins[thisLed], LOW);
+    }
+  } 
+}</code></pre>
+<h3 id="說明">說明：</h3>
+<ul>
+<li>L04: 宣告 ledPins 陣列並定義 LED bar 或 10 顆 LED 所在的腳位，在此使用 pin2 到 pin11 這 10 支腳位</li>
+<li>L17~L20: 讓 LED 產生掃瞄的效果，先由右往左</li>
+<li>L23~L33: 繼續讓 LED 產生掃瞄的效果，這次換成由左往右。跑完一輪後(先由右往左，再由左往右，這樣算一輪)，不關閉第一顆 LED 燈號，讓第一顆 LED 暫停一下</li>
+</ul>
+<h3 id="動動腦">動動腦</h3>
+<p>接上一顆可變電阻，利用可變電阻來控制 LED bar graph。提醒：使用 analogRead() 讀進來的可變電阻數值介於 0 到 1023，程式的邏輯可以這樣寫：介於 0 – 99 就開第一顆 LED、介於 100 – 199 開第二顆 LED、介於 200 – 299 開第三顆…，也可以先利用 map() 函式將 0 到 1023 的數值對應為 0 到 9 之間的數值，然後再決定開哪些 LED。</p>
+<h3 id="範例照片影片">範例照片／影片</h3>
+<ul>
+<li><a href="http://www.youtube.com/watch?feature=player_embedded&amp;v=WVo6byx7LK8">http://www.youtube.com/watch?feature=player_embedded&amp;v=WVo6byx7LK8</a></li>
+</ul>
+<h3 id="延伸閱讀">延伸閱讀</h3>
+<ul>
+<li>LED 10-bar array -- <a href="http://www.sqlskills.com/blogs/paulselec/post/Arduino-projects-LED-10-bar-array.aspx">http://www.sqlskills.com/blogs/paulselec/post/Arduino-projects-LED-10-bar-array.aspx</a></li>
+</ul>
+<p>【本文作者為馬萬圳，原文網址為： <a href="http://coopermaa2nd.blogspot.tw/2010/12/arduino-lab5-led-bar-graph.html">http://coopermaa2nd.blogspot.tw/2010/12/arduino-lab5-led-bar-graph.html</a> ，由陳鍾誠編輯後納入本雜誌】</p>
+</div>
+<div id="footer">
+<a href="https://www.facebook.com/groups/programmerMagazine/">程式人雜誌</a> ，採用 <a href="http://creativecommons.org/licenses/by-sa/3.0/tw/ ">創作共用：姓名標示、相同方式分享</a> 授權，歡迎加入 <a href="https://www.facebook.com/groups/programmerMagazine/">雜誌社團</a>
+</div>
+</body>
+</html>
