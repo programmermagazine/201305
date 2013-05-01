@@ -1,4 +1,4 @@
-## Arduino入門教學(5) – 多顆 LED 的控制 (作者：Copper Maa)
+## Arduino入門教學(5) – 多顆 LED 的控制 (作者：Cooper Maa)
 
 ### 實驗：Lab5 LED Bar Graph
 

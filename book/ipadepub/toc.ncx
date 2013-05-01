@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ncx version="2005-1" xmlns="http://www.daisy.org/z3986/2005/ncx/">
+  <head>
+    <meta name="dtb:uid" content="urn:uuid:6aa723e9-5b1b-46bf-9e13-2b848edb471d" />
+    <meta name="dtb:depth" content="1" />
+    <meta name="dtb:totalPageCount" content="0" />
+    <meta name="dtb:maxPageNumber" content="0" />
+    <meta name="cover" content="cover-image" />
+  </head>
+  <docTitle>
+    <text></text>
+  </docTitle>
+  <navMap>
+    <navPoint id="navPoint-0">
+      <navLabel>
+        <text></text>
+      </navLabel>
+      <content src="title_page.xhtml" />
+    </navPoint>
+    <navPoint id="navPoint-1" playOrder="1">
+      <navLabel>
+        <text>授權聲明</text>
+      </navLabel>
+      <content src="ch001.xhtml" />
+    </navPoint>
+    <navPoint id="navPoint-2" playOrder="2">
+      <navLabel>
+        <text>程式人短訊</text>
+      </navLabel>
+      <content src="ch002.xhtml" />
+      <navPoint id="navPoint-3" playOrder="3">
+        <navLabel>
+          <text>軟體短訊 – CMake 專案檔產生工具</text>
+        </navLabel>
+        <content src="ch002.xhtml#軟體短訊-cmake-專案檔產生工具" />
+      </navPoint>
+      <navPoint id="navPoint-4" playOrder="4">
+        <navLabel>
+          <text>硬體短訊 – Raspberry Pi 單板電腦</text>
+        </navLabel>
+        <content src="ch002.xhtml#硬體短訊-raspberry-pi-單板電腦" />
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint-5" playOrder="5">
+      <navLabel>
+        <text>程式人介紹</text>
+      </navLabel>
+      <content src="ch003.xhtml" />
+      <navPoint id="navPoint-6" playOrder="6">
+        <navLabel>
+          <text>大師風采 – Donald Ervin Knuth</text>
+        </navLabel>
+        <content src="ch003.xhtml#大師風采-donald-ervin-knuth" />
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint-7" playOrder="7">
+      <navLabel>
+        <text>程式人頻道</text>
+      </navLabel>
+      <content src="ch004.xhtml" />
+      <navPoint id="navPoint-8" playOrder="8">
+        <navLabel>
+          <text>MIT 的自製電腦課程 – nand2tetris</text>
+        </navLabel>
+        <content src="ch004.xhtml#mit-的自製電腦課程-nand2tetris" />
+      </navPoint>
+      <navPoint id="navPoint-9" playOrder="9">
+        <navLabel>
+          <text>看影片學 C# 遊戲程式 (2) – 使用 Window Forms</text>
+        </navLabel>
+        <content src="ch004.xhtml#看影片學-c-遊戲程式-2-使用-window-forms" />
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint-10" playOrder="10">
+      <navLabel>
+        <text>程式人討論區</text>
+      </navLabel>
+      <content src="ch005.xhtml" />
+      <navPoint id="navPoint-11" playOrder="11">
+        <navLabel>
+          <text>C 語言討論 – 學校沒教的那些事兒！ -- 以矩陣相加為例</text>
+        </navLabel>
+        <content src="ch005.xhtml#c-語言討論-學校沒教的那些事兒----以矩陣相加為例" />
+      </navPoint>
+      <navPoint id="navPoint-12" playOrder="12">
+        <navLabel>
+          <text>軟體工程討論 – CMMI、Agile 與Scrum</text>
+        </navLabel>
+        <content src="ch005.xhtml#軟體工程討論-cmmiagile-與scrum" />
+      </navPoint>
+      <navPoint id="navPoint-13" playOrder="13">
+        <navLabel>
+          <text>JavaScript 討論 – 繼承的實作方法</text>
+        </navLabel>
+        <content src="ch005.xhtml#javascript-討論-繼承的實作方法" />
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint-14" playOrder="14">
+      <navLabel>
+        <text>程式人文集</text>
+      </navLabel>
+      <content src="ch006.xhtml" />
+      <navPoint id="navPoint-15" playOrder="15">
+        <navLabel>
+          <text>Arduino入門教學(5) – 多顆 LED 的控制 (作者：Copper Maa)</text>
+        </navLabel>
+        <content src="ch006.xhtml#arduino入門教學5-多顆-led-的控制-作者copper-maa" />
+      </navPoint>
+      <navPoint id="navPoint-16" playOrder="16">
+        <navLabel>
+          <text>JavaScript (5) – 在互動網頁中的應用，以 HTML 編輯器為例 (作者：陳鍾誠)</text>
+        </navLabel>
+        <content src="ch006.xhtml#javascript-5-在互動網頁中的應用以-html-編輯器為例-作者陳鍾誠" />
+      </navPoint>
+      <navPoint id="navPoint-17" playOrder="17">
+        <navLabel>
+          <text>R 統計軟體(3) – 中央極限定理 (作者：陳鍾誠)</text>
+        </navLabel>
+        <content src="ch006.xhtml#r-統計軟體3-中央極限定理-作者陳鍾誠" />
+      </navPoint>
+      <navPoint id="navPoint-18" playOrder="18">
+        <navLabel>
+          <text>OpenCV (1) – C 語言影像辨識函式庫 -- 簡介、安裝與基本範例 (作者：Da Wang)</text>
+        </navLabel>
+        <content src="ch006.xhtml#opencv-1-c-語言影像辨識函式庫----簡介安裝與基本範例-作者da-wang" />
+      </navPoint>
+    </navPoint>
+    <navPoint id="navPoint-19" playOrder="19">
+      <navLabel>
+        <text>雜誌訊息</text>
+      </navLabel>
+      <content src="ch007.xhtml" />
+      <navPoint id="navPoint-20" playOrder="20">
+        <navLabel>
+          <text>讀者訂閱</text>
+        </navLabel>
+        <content src="ch007.xhtml#讀者訂閱" />
+      </navPoint>
+      <navPoint id="navPoint-21" playOrder="21">
+        <navLabel>
+          <text>投稿須知</text>
+        </navLabel>
+        <content src="ch007.xhtml#投稿須知" />
+      </navPoint>
+      <navPoint id="navPoint-22" playOrder="22">
+        <navLabel>
+          <text>參與編輯</text>
+        </navLabel>
+        <content src="ch007.xhtml#參與編輯" />
+      </navPoint>
+      <navPoint id="navPoint-23" playOrder="23">
+        <navLabel>
+          <text>公益資訊</text>
+        </navLabel>
+        <content src="ch007.xhtml#公益資訊" />
+      </navPoint>
+    </navPoint>
+  </navMap>
+</ncx>

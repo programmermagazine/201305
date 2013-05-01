@@ -32,13 +32,18 @@ code > span.er { color: #ff0000; font-weight: bold; }
    <h1><a href="https://www.facebook.com/groups/programmerMagazine">程式人雜誌</a> <sub> --  2013 年 5 月號 (開放公益出版品)</sub></h1>
 </div>
 <div id="content">
-<h2 id="opencv-1-c-語言影像辨識函式庫----簡介安裝與基本範例-作者da-wang">OpenCV (1) – C 語言影像辨識函式庫 -- 簡介、安裝與基本範例 (作者：Da Wang)</h2>
+<div id="TOC">
+<ul>
+<li><a href="#opencv-1-c-語言影像辨識函式庫----簡介安裝與基本範例-作者da-wang">OpenCV (1) – C 語言影像辨識函式庫 -- 簡介、安裝與基本範例 (作者：Da Wang)</a></li>
+</ul>
+</div>
+<h2 id="opencv-1-c-語言影像辨識函式庫----簡介安裝與基本範例-作者da-wang"><a href="#opencv-1-c-語言影像辨識函式庫----簡介安裝與基本範例-作者da-wang">OpenCV (1) – C 語言影像辨識函式庫 -- 簡介、安裝與基本範例 (作者：Da Wang)</a></h2>
 <p>OpenCV 是 Intel 所釋出的一組影像辨識函式庫，功能相當強大，從本期開始， 我們將刊載由 Da Wang 一連串的 OpenCV 系列文章，讓讀者得以透過這些文章 進入影像辨識與處理的領域，這些文章的原文網誌位於以下網址：</p>
 <ul>
 <li><a href="http://yester-place.blogspot.tw/search/label/OpenCV">http://yester-place.blogspot.tw/search/label/OpenCV</a></li>
 </ul>
 <p>然而、網誌中的文章是 2008 年開始寫的，因此在使用的 OpenCV 版本上有些許落差， 為了彌補這樣的問題，編輯請 Da Wang 幫我們補充了最新的 OpenCV 2.44 版的程式示範，這個新版採用 cmake 建置軟體，可以編出 GNU make 專案或 Visual Studio 的專案，讓讀者能透過這樣的示範順利的執行 網誌中的這些程式。</p>
-<h3 id="簡介">簡介</h3>
+<h3 id="簡介"><a href="#簡介">簡介</a></h3>
 <p>OpenCV(Open Source Computer Vision) : 由Intel公司所開發出來的Open Source圖形演算法的函式庫(Image Process Libary)可以製做圖片，視訊，矩陣運算，統計，圖論，資料儲存的相關 C 語言程式設計，</p>
 <p>相關的領域為:影像處理，電腦視覺，圖形識別，電腦圖學，資訊檢索或遊戲設計，比較有名的製作為物體追蹤，人臉辨識，傅立葉轉換，紋理分析， 可以整合不同圖檔格式的矩陣運算，應用在靜態圖片(BMP,JPG,TIF,PNG) ，動態Webcam的影像處理。</p>
 <p>OpenCV 的組成為許多圖形處理的資料結構及演算法所疊合而成， 因此需要一些基本的資料結構基礎， 比如說 struct 怎麼使用， 如何 release 資料結構的空間等基本操作，會使用到 linked list 的算少數， 算是C語言中級程式設計， 有興趣玩的話，國內影像處理領域相關論文演算法幾乎都可以在OpenCV找的到，方便學術界用c語言推演更進階的影像處理演算法， 功能好比Matlab，但比Matlab快上許多倍，更可以整合c語言相關函式庫，做更多元強大的功能應用，然而它最大的門檻是比 Matlab 的進入障礙還高一些， 運用到許多資料結構，指標運算，記憶體位址，學完OpenCV，相信程式設計的功力更可以技高一籌。</p>
@@ -49,7 +54,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <span class="ot">#include &lt;highgui.h&gt;</span>
 <span class="ot">#include &lt;cxcore.h&gt;</span>
 <span class="ot">#include &lt;cvaux.h&gt;</span></code></pre>
-<h3 id="顯示靜態圖片">顯示靜態圖片</h3>
+<h3 id="顯示靜態圖片"><a href="#顯示靜態圖片">顯示靜態圖片</a></h3>
 <p>接著，就介紹最基本的資料結構，IplImage，此資料結構是所有圖檔的一個中介，圖檔格式有很多種(bmp,jpg,png,tif)，此資料結構的內容既不是bmp，也不是jpg，而是一個藉由cvLoadImage()所轉換的自定義格式如下所示:</p>
 <div class="figure">
 <img src="../img/cvLoadImage.jpg" />
@@ -92,7 +97,7 @@ cvShowImage(<span class="st">&quot;Show Image&quot;</span>,Image1);</code></pre>
 <div class="figure">
 <img src="../img/cvShowImageRain.jpg" />
 </div>
-<h3 id="使用-webcam-抓取動態影片">使用 WebCam 抓取動態影片</h3>
+<h3 id="使用-webcam-抓取動態影片"><a href="#使用-webcam-抓取動態影片">使用 WebCam 抓取動態影片</a></h3>
 <p>視訊的使用也是OpenCV的基本功能之一，它可以做連續性的影像處理，比capCreateCaptureWindow()這個函式好用多了， capCreateCaptureWindow()在&quot;vfw.h&quot;裡，只能在MicroSoft的Visual C++及 Borland C++ builder 使用， Dev-C++4.9.9.2 不提供此函式， 當然啦， OpenCV對於視訊的處理提供了比capCreateCaptureWindow()更強大的功能。</p>
 <p>程式碼部份</p>
 <pre class="sourceCode CPP"><code class="sourceCode cpp"><span class="ot">#include &lt;cv.h&gt;</span>
@@ -122,8 +127,8 @@ cvShowImage(<span class="st">&quot;Show Image&quot;</span>,Image1);</code></pre>
 <div class="figure">
 <img src="../img/cvCamCapture.jpg" />
 </div>
-<h3 id="opencv-2.44-版的安裝與使用-搭配-cmake-與-visual-studio">OpenCV 2.44 版的安裝與使用 (搭配 CMake 與 Visual Studio)</h3>
-<h4 id="下載並安裝-cmake-opencv">下載並安裝 CMake , OpenCV</h4>
+<h3 id="opencv-2.44-版的安裝與使用-搭配-cmake-與-visual-studio"><a href="#opencv-2.44-版的安裝與使用-搭配-cmake-與-visual-studio">OpenCV 2.44 版的安裝與使用 (搭配 CMake 與 Visual Studio)</a></h3>
+<h4 id="下載並安裝-cmake-opencv"><a href="#下載並安裝-cmake-opencv">下載並安裝 CMake , OpenCV</a></h4>
 <p>下載 CMAKE : <a href="http://www.cmake.org/">http://www.cmake.org/</a></p>
 <div class="figure">
 <img src="../img/cv244_cmake_download.png" />
@@ -140,7 +145,7 @@ cvShowImage(<span class="st">&quot;Show Image&quot;</span>,Image1);</code></pre>
 <div class="figure">
 <img src="../img/cv244_cmake_extract2.png" />
 </div>
-<h4 id="透過-cmake-建置-opencv-專案">透過 CMAKE 建置 OpenCV 專案</h4>
+<h4 id="透過-cmake-建置-opencv-專案"><a href="#透過-cmake-建置-opencv-專案">透過 CMAKE 建置 OpenCV 專案</a></h4>
 <p>開啟CMAKE選擇路徑 <code>c:\opencv</code>，點選 configure</p>
 <div class="figure">
 <img src="../img/cv244_cmake_extract3.png" />
@@ -167,7 +172,7 @@ cvShowImage(<span class="st">&quot;Show Image&quot;</span>,Image1);</code></pre>
 </div>
 <p>設定動態鏈結函式庫路徑(DLL檔) (位於「控制台-&gt;進階-&gt;環境變數」)</p>
 <p><img src="../img/cv244_VisualStudio5_path1.png" /> <img src="../img/cv244_VisualStudio6_path2.png" /></p>
-<h4 id="opencv-的-vs-2012-vusual-c-環境設立">OpenCV 的 VS 2012 Vusual C++ 環境設立</h4>
+<h4 id="opencv-的-vs-2012-vusual-c-環境設立"><a href="#opencv-的-vs-2012-vusual-c-環境設立">OpenCV 的 VS 2012 Vusual C++ 環境設立</a></h4>
 <p>開啟一個空專案test，一個source.cpp檔，選取屬性管理員</p>
 <div class="figure">
 <img src="../img/cv244_VisualStudio7.png" />
@@ -211,7 +216,7 @@ opencv_imgproc244.lib</code></pre>
 <div class="figure">
 <img src="../img/cv244_VisualStudio14.png" />
 </div>
-<h3 id="原文連結">原文連結</h3>
+<h3 id="原文連結"><a href="#原文連結">原文連結</a></h3>
 <ul>
 <li><a href="http://yester-place.blogspot.tw/search/label/OpenCV%E4%BB%8B%E7%B4%B9">OpenCV程式設計介紹(1)</a></li>
 <li><a href="http://yester-place.blogspot.tw/2008/06/opencv2.html">OpenCV程式設計介紹(2)</a></li>

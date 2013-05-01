@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package version="2.0" xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookId">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <dc:rights>Creative Commons Non-Commercial Share Alike 3.0</dc:rights>
+    <dc:language>en-US</dc:language>
+    <dc:title></dc:title>
+    <dc:identifier id="BookId">urn:uuid:6aa723e9-5b1b-46bf-9e13-2b848edb471d</dc:identifier>
+    <dc:date>2013-05-01T08:55:32Z</dc:date>
+    <meta name="cover" content="cover-image" />
+  </metadata>
+  <manifest>
+    <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml" />
+    <item id="style" href="stylesheet.css" media-type="text/css" />
+    <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" />
+    <item id="cover" href="cover.xhtml" media-type="application/xhtml+xml" />
+    <item id="title_page" href="title_page.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch001" href="ch001.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch002" href="ch002.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch003" href="ch003.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch004" href="ch004.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch005" href="ch005.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch006" href="ch006.xhtml" media-type="application/xhtml+xml" />
+    <item id="ch007" href="ch007.xhtml" media-type="application/xhtml+xml" />
+    <item id="cover-image" href="cover-image.jpg" media-type="image/jpeg" />
+    <item id="img40" href="images/img40.png" media-type="image/png" />
+    <item id="img39" href="images/img39.png" media-type="image/png" />
+    <item id="img38" href="images/img38.png" media-type="image/png" />
+    <item id="img37" href="images/img37.png" media-type="image/png" />
+    <item id="img36" href="images/img36.png" media-type="image/png" />
+    <item id="img35" href="images/img35.png" media-type="image/png" />
+    <item id="img34" href="images/img34.png" media-type="image/png" />
+    <item id="img33" href="images/img33.png" media-type="image/png" />
+    <item id="img32" href="images/img32.png" media-type="image/png" />
+    <item id="img31" href="images/img31.png" media-type="image/png" />
+    <item id="img30" href="images/img30.png" media-type="image/png" />
+    <item id="img29" href="images/img29.png" media-type="image/png" />
+    <item id="img28" href="images/img28.png" media-type="image/png" />
+    <item id="img27" href="images/img27.png" media-type="image/png" />
+    <item id="img26" href="images/img26.png" media-type="image/png" />
+    <item id="img25" href="images/img25.png" media-type="image/png" />
+    <item id="img24" href="images/img24.png" media-type="image/png" />
+    <item id="img23" href="images/img23.png" media-type="image/png" />
+    <item id="img22" href="images/img22.png" media-type="image/png" />
+    <item id="img21" href="images/img21.png" media-type="image/png" />
+    <item id="img20" href="images/img20.jpg" media-type="image/jpeg" />
+    <item id="img19" href="images/img19.jpg" media-type="image/jpeg" />
+    <item id="img18" href="images/img18.jpg" media-type="image/jpeg" />
+    <item id="img17" href="images/img17.jpg" media-type="image/jpeg" />
+    <item id="img16" href="images/img16.jpg" media-type="image/jpeg" />
+    <item id="img15" href="images/img15.jpg" media-type="image/jpeg" />
+    <item id="img14" href="images/img14.jpg" media-type="image/jpeg" />
+    <item id="img13" href="images/img13.jpg" media-type="image/jpeg" />
+    <item id="img12" href="images/img12.jpg" media-type="image/jpeg" />
+    <item id="img11" href="images/img11.jpg" media-type="image/jpeg" />
+    <item id="img10" href="images/img10.jpg" media-type="image/jpeg" />
+    <item id="img9" href="images/img9.jpg" media-type="image/jpeg" />
+    <item id="img8" href="images/img8.jpg" media-type="image/jpeg" />
+    <item id="img7" href="images/img7.jpg" media-type="image/jpeg" />
+    <item id="img6" href="images/img6.jpg" media-type="image/jpeg" />
+    <item id="img5" href="images/img5.png" media-type="image/png" />
+    <item id="img4" href="images/img4.png" media-type="image/png" />
+    <item id="img3" href="images/img3.jpg" media-type="image/jpeg" />
+    <item id="img2" href="images/img2.JPG" media-type="image/jpeg" />
+    <item id="img1" href="images/img1.jpg" media-type="image/jpeg" />
+    <item id="img0" href="images/img0.jpg" media-type="image/jpeg" />
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="cover" linear="no" />
+    <itemref idref="title_page" linear="yes" />
+    <itemref idref="nav" linear="yes" />
+    <itemref idref="ch001" />
+    <itemref idref="ch002" />
+    <itemref idref="ch003" />
+    <itemref idref="ch004" />
+    <itemref idref="ch005" />
+    <itemref idref="ch006" />
+    <itemref idref="ch007" />
+  </spine>
+  <guide>
+    <reference type="toc" title="" href="nav.xhtml" />
+  </guide>
+</package>

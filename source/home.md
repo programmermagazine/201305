@@ -22,7 +22,7 @@
     * [軟體工程討論 – CMMI、Agile 與Scrum](discuss2.html)
     * [JavaScript 討論 – 繼承的實作方法](discuss3.html)
 * 程式人文集
-    * [Arduino入門教學(5) – 多顆 LED 的控制 (作者：Copper Maa)](article1.html)
+    * [Arduino入門教學(5) – 多顆 LED 的控制 (作者：Cooper Maa)](article1.html)
     * [JavaScript (5) – 在互動網頁中的應用，以 HTML 編輯器為例(作者：陳鍾誠)](article2.html)
     * [R 統計軟體(3) – 中央極限定理 (作者：陳鍾誠)](article3.html)
     * [OpenCV (1) – C 語言影像辨識函式庫 -- 簡介、安裝與基本範例 (作者：Da Wang)](article4.html)

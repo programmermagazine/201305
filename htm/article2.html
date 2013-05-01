@@ -32,9 +32,14 @@ code > span.er { color: #ff0000; font-weight: bold; }
    <h1><a href="https://www.facebook.com/groups/programmerMagazine">程式人雜誌</a> <sub> --  2013 年 5 月號 (開放公益出版品)</sub></h1>
 </div>
 <div id="content">
-<h2 id="javascript-5-在互動網頁中的應用以-html-編輯器為例-作者陳鍾誠">JavaScript (5) – 在互動網頁中的應用，以 HTML 編輯器為例 (作者：陳鍾誠)</h2>
+<div id="TOC">
+<ul>
+<li><a href="#javascript-5-在互動網頁中的應用以-html-編輯器為例-作者陳鍾誠">JavaScript (5) – 在互動網頁中的應用，以 HTML 編輯器為例 (作者：陳鍾誠)</a></li>
+</ul>
+</div>
+<h2 id="javascript-5-在互動網頁中的應用以-html-編輯器為例-作者陳鍾誠"><a href="#javascript-5-在互動網頁中的應用以-html-編輯器為例-作者陳鍾誠">JavaScript (5) – 在互動網頁中的應用，以 HTML 編輯器為例 (作者：陳鍾誠)</a></h2>
 <p>在本文當中，我們將透過 JavaScript 設計一個 HTML 編輯器，讓您可以直接在瀏覽器當中看到 HTML 網頁的呈現結果， 筆者認為這個範例對學習動態網頁設計是一個非常簡單、卻又很有啟發性的程式。因為他很明顯的展現了動態網頁的原理。</p>
-<h3 id="html-編輯器">HTML 編輯器</h3>
+<h3 id="html-編輯器"><a href="#html-編輯器">HTML 編輯器</a></h3>
 <p>以下是該 HTML 編輯器的執行結果，當我們在 CSS 與 HTML 區塊輸入對應的原始碼之後，就可以按下「→」按鈕，然後在 呈現的 <code>&lt;div id=&quot;showbox&quot; ...&lt;/div&gt;</code> 區塊看到兩者搭配時的呈現結果。</p>
 <div class="figure">
 <img src="../img/HtmlEditorRun.jpg" alt="HTML 編輯器的執行畫面" /><p class="caption">HTML 編輯器的執行畫面</p>
@@ -108,7 +113,7 @@ Hello! <span class="kw">&lt;a</span><span class="ot"> href=</span><span class="s
 <span class="kw">&lt;/form&gt;</span>
 <span class="kw">&lt;/body&gt;</span>
 <span class="kw">&lt;/html&gt;</span></code></pre>
-<h3 id="程式解析">程式解析</h3>
+<h3 id="程式解析"><a href="#程式解析">程式解析</a></h3>
 <p>上述程式當中有三個主要的區塊，分別是：</p>
 <ol style="list-style-type: decimal">
 <li>CSS 填入區塊： <code>&lt;textarea id=&quot;cssbox&quot; ...&lt;/textarea&gt;</code></li>
@@ -135,10 +140,10 @@ Hello! <span class="kw">&lt;a</span><span class="ot"> href=</span><span class="s
 <li>利用 <code>showboxstyle.innerHTML = cssbox.value</code> 這個指令將 cssbox 的內容填入到該表頭的 style 區塊中</li>
 </ol>
 <p>這樣就達成了套用 CSS 內容到網頁中的目的，完成了整個 HTML 編輯器的功能。</p>
-<h3 id="結語">結語</h3>
+<h3 id="結語"><a href="#結語">結語</a></h3>
 <p>在本文中，我們用非常簡單的程式，建構了一個 HTML 編輯器。事實上我們只不過是把網頁內容從編輯區域移動到顯示區域，然後流覽器就會 自動解釋這些內容進行呈現了。</p>
 <p>在本系列的文章中，關於瀏覽器部分的 JavaScript 程式，我們將至此告一個段落，在下一期當中，我們將開始進入伺服端的 javascript 程式。 我們將利用 node.js 這個伺服端 JavaScript 執行平台，進一步探索 JavaScript 程式的奧秘，我們下期見！</p>
-<h3 id="參考">參考</h3>
+<h3 id="參考"><a href="#參考">參考</a></h3>
 <ul>
 <li><a href="http://stackoverflow.com/questions/1720320/how-to-dynamically-create-css-class-in-javascript-and-apply">http://stackoverflow.com/questions/1720320/how-to-dynamically-create-css-class-in-javascript-and-apply</a></li>
 <li><a href="http://dev.opera.com/articles/view/dynamic-style-css-javascript/">http://dev.opera.com/articles/view/dynamic-style-css-javascript/</a></li>
