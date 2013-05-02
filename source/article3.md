@@ -12,7 +12,7 @@
 如果用白話文陳述，那就是說 n 個樣本的平均數  ![](../timg/_frac_x__894e240322d2234d15449f707fb01d9f.jpg)  會趨近於常態分布。
 
 更精確一點的說，當您從某個母體 X 取出 n 個樣本，則這 n 個樣本的平均數  ![](../timg/_frac_x__894e240322d2234d15449f707fb01d9f.jpg)  會趨近於以平均期望值  ![](../timg/_mu_c9faf6ead2cd2c2187bd943488de1d0a.jpg)  為中心，
-以母體標準差  ![](../timg/_sigma_a2ab7d71a0f07f388ff823293c147d21.jpg)   除以  ![](../timg/_sqrt_n__be183cdd1e68ce30a59b96233609b08f.jpg)  的值 $\sigma/\sqrt{n} 為標準差的常態分布。
+以母體標準差  ![](../timg/_sigma_a2ab7d71a0f07f388ff823293c147d21.jpg)   除以  ![](../timg/_sqrt_n__be183cdd1e68ce30a59b96233609b08f.jpg)  的值  ![](../timg/_sigma_s_b902c90353f0130390ad6d58bccf041c.jpg)  為標準差的常態分布。
 
 如果採用另一種正規化後的公式寫法，也可以將上述的「中央極限定理」改寫為：  ![](../timg/_frac_ba_5808b18298954a6703f73eadcd9acb03.jpg) 
 
