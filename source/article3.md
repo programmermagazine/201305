@@ -7,36 +7,36 @@
 
 ### 中央極限定理簡介
 
-中央極限定理的數學式： ![](../img/texCLT.png) <!--$\frac{x_1+x_2+...+x_n}{n}  = \bar{x} \rightarrow N(\mu, \sigma/\sqrt{n})$-->
+中央極限定理的數學式：  ![](../timg/_frac_x__5884aa99cd8217c2afb62761ea0e4934.jpg) 
 
-如果用白話文陳述，那就是說 n 個樣本的平均數 ![](../img/texXBar.png) 會趨近於常態分布。
+如果用白話文陳述，那就是說 n 個樣本的平均數  ![](../timg/_frac_x__894e240322d2234d15449f707fb01d9f.jpg)  會趨近於常態分布。
 
-更精確一點的說，當您從某個母體 X 取出 n 個樣本，則這 n 個樣本的平均數 ![](../img/texXBar.png) 會趨近於以平均期望值 ![](../img/texMu.png) <!--$\mu$--> 為中心，
-以母體標準差 <!--$\sigma$--> ![](../img/texSigma.png)  除以 ![](../img/texSqrtN.png) <!--$\sqrt{n}$--> 的值 ![](../img/texSigmaOverSqrtN.png) <!--$\sigma/\sqrt{n}$--> 為標準差的常態分布。
+更精確一點的說，當您從某個母體 X 取出 n 個樣本，則這 n 個樣本的平均數  ![](../timg/_frac_x__894e240322d2234d15449f707fb01d9f.jpg)  會趨近於以平均期望值  ![](../timg/_mu_c9faf6ead2cd2c2187bd943488de1d0a.jpg)  為中心，
+以母體標準差  ![](../timg/_sigma_a2ab7d71a0f07f388ff823293c147d21.jpg)   除以  ![](../timg/_sqrt_n__be183cdd1e68ce30a59b96233609b08f.jpg)  的值 $\sigma/\sqrt{n} 為標準差的常態分布。
 
-如果採用另一種正規化後的公式寫法，也可以將上述的「中央極限定理」改寫為：![](../img/texCltZ.png) <!--$\frac{\bar{x}-\mu}{\sigma/\sqrt{n}} \rightarrow Z$-->
+如果採用另一種正規化後的公式寫法，也可以將上述的「中央極限定理」改寫為：  ![](../timg/_frac_ba_5808b18298954a6703f73eadcd9acb03.jpg) 
 
-其中的 Z 是指標準常態分部，也就是 ![](../img/texCltZ-Z.png) <!--$\frac{\bar{x}-\mu}{\sigma/\sqrt{n}}$--> 會趨近標準常態分布。
+其中的 Z 是指標準常態分部，也就是  ![](../timg/_frac_ba_41f620914dc6a86571eb622d2c929eb5.jpg)  會趨近標準常態分布。
 
 ### 中央極限定理的用途
 
-根據上述的定義，我們知道當樣本數 n 足夠大時 (通常 20 個以上就夠大了)， n 個樣本的平均值 ![](../img/texXBar.png) <!--$\frac{x_1+x_2+...+x_n}{n}=\bar{x}$--> 
-會趨近於常態分布，換句話說也就是 ![](../img/texCltZ-Z.png) <!--$\frac{\bar{x}-\mu}{\sigma/\sqrt{n}}$--> 會趨近於標準常態分布。
+根據上述的定義，我們知道當樣本數 n 足夠大時 (通常 20 個以上就夠大了)， n 個樣本的平均值  ![](../timg/_frac_x__894e240322d2234d15449f707fb01d9f.jpg) 
+會趨近於常態分布，換句話說也就是  ![](../timg/_frac_ba_41f620914dc6a86571eb622d2c929eb5.jpg)  會趨近於標準常態分布。
 
-因此、當我們取得一組樣本之後，我們就可以計算其平均數  ![](../img/texXBar.png) <!--$\frac{x_1+x_2+...+x_n}{n}=\bar{x}$--> ，如果有人告訴我們說母體的
-平均數 ![](../img/texMu.png) 的值是多少，我們就可以看看 ![](../img/texXBar.png) 與 ![](../img/texMu.png) 是否差距很遠，如果差距很遠，
-導致 ![](../img/texXBar.png) 來自平均數 ![](../img/texMu.png)
-母體的機率很小，那麼很可能是此組樣本是非常罕見的特例，或者該組樣本的抽樣有所偏差，也就是該組樣本很可能並非來自平均數為 ![](../img/texMu.png) <!--$\mu$-->
+因此、當我們取得一組樣本之後，我們就可以計算其平均數  ![](../timg/_frac_x__894e240322d2234d15449f707fb01d9f.jpg) ，如果有人告訴我們說母體的
+平均數  ![](../timg/_mu_c9faf6ead2cd2c2187bd943488de1d0a.jpg)  的值是多少，我們就可以看看  ![](../timg/_bar_x__6fbdf291cda891b99cf211417ad1df18.jpg)  與  ![](../timg/_mu_c9faf6ead2cd2c2187bd943488de1d0a.jpg)  是否差距很遠，如果差距很遠，
+導致  ![](../timg/_bar_x__6fbdf291cda891b99cf211417ad1df18.jpg)  來自平均數  ![](../timg/_mu_c9faf6ead2cd2c2187bd943488de1d0a.jpg) 
+母體的機率很小，那麼很可能是此組樣本是非常罕見的特例，或者該組樣本的抽樣有所偏差，也就是該組樣本很可能並非來自平均數為  ![](../timg/_mu_c9faf6ead2cd2c2187bd943488de1d0a.jpg) 
 的母體。
 
 以下是一些標準常態分布的重要數值，
 
-1. ![](../img/texSigma1.png) <!--$P[-\sigma < X - \mu < \sigma] = 0.68$-->
-2. ![](../img/texSigma2.png) <!--$P[-2 \sigma < X - \mu < 2 \sigma] = 0.95$-->
-3. ![](../img/texSigma3.png) <!--$P[-3 \sigma < X - \mu < 3 \sigma] = 0.997$-->
-4. ![](../img/texSigma4.png) <!--$P[-4 \sigma < X - \mu < 4 \sigma] = 0.99993$-->
-5. ![](../img/texSigma5.png) <!--$P[-5 \sigma < X - \mu < 5 \sigma] = 0.9999994$-->
-6. ![](../img/texSigma6.png) <!--$P[-6 \sigma < X - \mu < 6 \sigma] = 0.999999998$-->
+1.  ![](../timg/P_sigma__e258ddb9fece89d2a1eff035497f6032.jpg) 
+2.  ![](../timg/P_2_sigm_00c3fe6de89d7f4a7f3dd19d11b48f27.jpg) 
+3.  ![](../timg/P_3_sigm_83a5e13e11e1c3cf89a98da3b9735358.jpg) 
+4.  ![](../timg/P_4_sigm_352e43bbeb3afe137cef2896293a6a4e.jpg) 
+5.  ![](../timg/P_5_sigm_83ffc195699b28ac9bdb4847f943f7fb.jpg) 
+6.  ![](../timg/P_6_sigm_62ffbb4b34fa82d0e887a09f46b8a21c.jpg) 
 
 
 ```R
@@ -59,7 +59,7 @@
 
 從上面的數值您可以看出來，管理學上所謂的六標準差其實是很高的一個要求，也就是良率必須要達到 99.9999998% 以上才行。
 
-如果您今天所取的 n 個樣本，與母體平均數 ![](../img/texMu.png) <!--$\mu$--> 距離兩個標準差以上，那就很可能有問題了，這種推論稱為檢定，我們可以用 R 軟體中的
+如果您今天所取的 n 個樣本，與母體平均數  ![](../timg/_mu_c9faf6ead2cd2c2187bd943488de1d0a.jpg)  距離兩個標準差以上，那就很可能有問題了，這種推論稱為檢定，我們可以用 R 軟體中的
 t.test 函數來檢驗這件事，我們將在下一期當中說明如何用 R 軟體進行統計檢定的主題，讓我們先將焦點移回到中央極限定理身上，用 R 軟體
 來驗證該定理。
 
@@ -78,8 +78,8 @@ t.test 函數來檢驗這件事，我們將在下一期當中說明如何用 R �
 
 1. u 乃是將 50 萬個 uniform 樣本分配成 50*10000 的矩陣，
 2. y 對 u 進行列統計 apply ( u, 2, mean ) 代表對每行取平均值 mean(col of u) 的結果。
-3. 因此 y 代表從 Uniform Distribution 中每次取出 50 個樣本，然後進行加總平均 ![](../img/texXBar50.png) <!--$(x_1+x_2+...+x_{50})/50$--> 的結果。
-4. 從下列的 hist(y) 圖形中，我們可以看到中央極限定理的證據：![](../img/texXBar50.png) <!--$(x_1+x_2+...+x_{50})/50$--> 會趨向常態分布。
+3. 因此 y 代表從 Uniform Distribution 中每次取出 50 個樣本，然後進行加總平均的結果，也就是   ![](../timg/_frac_x__8c510cfb84836f2f9c81b601b1f3dbd3.jpg)  。
+4. 從下列的 hist(y) 圖形中，我們可以看到中央極限定理的證據：也就是   ![](../timg/_frac_x__8c510cfb84836f2f9c81b601b1f3dbd3.jpg)  會趨向常態分布。
 
 ![圖、hist(u[,1]) 畫出的圖形](../img/HistU.jpg)
 
